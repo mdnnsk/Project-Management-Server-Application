@@ -8,7 +8,7 @@ $(document).ready(function(){
       return;
     }
 
-    var projectName =
+    // var projectName =
 
     var frontEnd = Math.floor(Math.random()*(60 - 10 + 1) + 10);
     var clientSide = Math.floor(Math.random()*(60 - 10 + 1) + 10);
