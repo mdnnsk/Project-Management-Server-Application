@@ -20,5 +20,3 @@ var generateName = function(){
 };
 
 module.exports = generateName;
-
-//module for json eparser
