@@ -5,15 +5,15 @@ var generateName = function(){
 
   var fullName;
 
-  var json = JSON.parse());
+  var json = require('../students.json');
 
-  var firstName = json.students.first_name[Math.floor(Math.random()*json.students.length)];
+  var firstName = json.students[Math.floor(Math.random()*json.students.length)].first_name;
 
-  var lastName = json.students.last_name[Math.floor(Math.random()*json.students.length)];
+  var lastName = json.students[Math.floor(Math.random()*json.students.length)].last_name;
 
 
   //combine random first name with random last name
-  fullName = firstName + lastName;
+  fullName = firstName + " " + lastName;
 
   //if fullName already exists, run function again
   return fullName;
