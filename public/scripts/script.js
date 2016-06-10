@@ -1,17 +1,12 @@
+var frontEndCurrent = 0;
+var clientSideCurrent = 0;
+var serverSideCurrent = 0;
+
 $(document).ready(function(){
-  var openProject = false;
 
   $('#createProject').click(function(){
-    // var scope =  It might be fun to have a scope variable that will scale these numbers to "small", "medium", and "large" projects
-    if (openProject === true) {
-      alert("Please close your current project first.");
-      return;
-    }
-
-    // var projectName = new company_names(); //This needs to eventually needs to connect to Craig's module
 
     getCompany();
-
 
   });
 });
@@ -35,11 +30,10 @@ function ajaxReady(projectName){
   var serverSide = Math.floor(Math.random()*(60 - 10 + 1) + 10);
 
   //Display the
-  $('#projectIn').append("<div><h2>" + projectName + "</h2><p>Front End: " + frontEnd + "</p><p>Client Side: " + clientSide + "</p><p>Server Side: " + serverSide + "</p><button id='deleteProject' class='btn btn-danger'>Delete Project</button><div id='employeeIn'><h2>Employees</h2></div></div>");
+  $('#projectIn').append("<div><h2>" + projectName + "</h2><p id='frontEndP'>Front End: " + frontEnd + "</p><p id='clientSideP'>Client Side: " + clientSide + "</p><p id='serverSideP'>Server Side: " + serverSide + "</p><button id='deleteProject' class='btn btn-danger'>Delete Project</button><div id='employeeIn'><h2>Employees</h2></div></div>");
   openProject = true;
   $('#deleteProject').click(function(){
     $(this).parent().remove();
-    openProject = false;
   });
 
   //Create the createEmployee button and add the event handler
@@ -63,11 +57,26 @@ function getEmployee() {
   console.log("Ajax fail");
 }
 
-function ajaxReadyEmployee(employeeName){
+function ajaxReadyEmployee(employeeObject){
 
   //Display the
-  $('#employeeIn').append("Name: " + employeeName);
+  $('#employeeIn').append("<div class='employeeDiv'><h3>Name: " + employeeObject.fullName + "</h3><p>Skill: " + employeeObject.skill + "- " + employeeObject.scrum + "</p></div>");
 
+  switch (employeeObject.skill) {
+    case "Front End":
+      frontEndCurrent -= employeeObject.skill;
+      $('#frontEndP').innerHTML = "Front End: " + frontEndCurrent;
+      break;
+    case "Client Side":
+      clientSideCurrent -= employeeObject.skill;
+      $('#clientSideP').innerHTML = "Client Side: " + clientSideCurrent;
+      break;
+    case "Server Side":
+      serverSideCurrent -= employeeObject.skill;
+      $('#serverSideP').innerHTML = "Server Side: " + serverSideCurrent;
+      break;
+    default: alert("How did you even get this job?");
 
+  }
 
 };

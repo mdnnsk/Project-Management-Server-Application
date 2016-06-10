@@ -5,12 +5,10 @@ var company_names = require('../modules/company_names.js');
 
 var employee_name = require('../modules/randomNameModule.js');
 
-var server = app.listen (8080, 'localhost', function(){
+var server = app.listen (8000, 'localhost', function(){
   var port = server.address().port;
   console.log( ' server is on ' + port);
 });
-
-var randomNameModule = require('../modules/randomNameModule.js');
 
 
 app.get ( '/', function( req, res){

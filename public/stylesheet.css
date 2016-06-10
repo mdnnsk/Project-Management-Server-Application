@@ -13,3 +13,9 @@ h3 {
 #employeeIn {
   text-align: center;
 }
+
+.employeeDiv {
+  display: inline-block;
+  height: 100px;
+  width: 400px;
+}

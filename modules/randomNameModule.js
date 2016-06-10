@@ -3,7 +3,9 @@
 
 var generateName = function(){
 
-  var fullName;
+  var employee = {};
+  var skill = ["Front End", "Client Side", "Server Side"];
+  var scrum = Math.floor((Math.random() * 9) + 1);
 
   var json = require('../students.json');
 
@@ -13,10 +15,11 @@ var generateName = function(){
 
 
   //combine random first name with random last name
-  fullName = firstName + " " + lastName;
-
+  employee.fullName  = firstName + " " + lastName;
+  employee.skill = skill[ Math.floor(Math.random() * 3) ];
+  employee.scrum = scrum;
   //if fullName already exists, run function again
-  return fullName;
+  return employee;
 };
 
 module.exports = generateName;
